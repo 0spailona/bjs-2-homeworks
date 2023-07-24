@@ -5,12 +5,10 @@ function solveEquation(a, b, c) {
     let x;
     let d = (b ** 2 - 4 * a * c);
 
-    if (d < 0) {
-        return arr;
-    } else if (d === 0) {
+     if (d === 0) {
         x = -b / (2 * a);
         arr.push(x);
-    } else {
+    } else if (d > 0) {
         x = (-b + Math.sqrt(d)) / (2 * a);
         arr.push(x);
         x = (-b - Math.sqrt(d)) / (2 * a);
