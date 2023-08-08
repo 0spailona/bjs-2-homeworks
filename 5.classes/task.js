@@ -98,12 +98,7 @@ class Library {
 class Student {
     constructor(name) {
         this.name = name;
-                this.marks = {
-                    "физика": [],
-                    "химия": [],
-                    "литература": [],
-                    "информатика": []
-                };
+                this.marks = {};
     }
 
     addMark(mark, subject) {
@@ -126,7 +121,7 @@ class Student {
         let subjects = Object.keys(this.marks).filter(subject => this.marks[subject].length > 0);
 return subjects.reduce((sum, subject) => sum + this.getAverageBySubject(subject) / subjects.length,0);
     }
-
 }
+
 
 
