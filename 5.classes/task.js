@@ -94,11 +94,10 @@ class Library {
 }
 
 
-
 class Student {
     constructor(name) {
         this.name = name;
-                this.marks = {};
+        this.marks = {};
     }
 
     addMark(mark, subject) {
@@ -113,13 +112,13 @@ class Student {
         return true;
     }
 
-    getAverageBySubject(subject){
+    getAverageBySubject(subject) {
         return this.marks[subject] ? this.marks[subject].reduce((sum, mark) => sum + mark / this.marks[subject].length, 0) : 0;
-}
+    }
 
-    getAverage(){
+    getAverage() {
         let subjects = Object.keys(this.marks).filter(subject => this.marks[subject].length > 0);
-return subjects.reduce((sum, subject) => sum + this.getAverageBySubject(subject) / subjects.length,0);
+        return subjects.reduce((sum, subject) => sum + this.getAverageBySubject(subject) / subjects.length, 0);
     }
 }
 
