@@ -123,4 +123,33 @@ describe('Домашнее задание к лекции 7 «Асинхронн
       done();
     }, 1000);
   });
+
+  it('будильник должен запускать интервал, который запустит колбек', (done) => {
+    let flagToCall = false;
+    clock.addClock("16:46", () => flagToCall = true);
+    clock.getCurrentFormattedTime = () => "16:45";
+    clock.start();
+    clock.getCurrentFormattedTime = () => "16:46";
+
+    setTimeout(() => {
+      expect(clock.alarmCollection[0].canCall).toBe(false);
+      expect(flagToCall).toBe(true);
+      done();
+    }, 1000);
+  });
+
+  it('будильник должен запускать интервал, который запустит колбек', (done) => {
+    let flagToCall = false;
+    clock.addClock("16:45", () => flagToCall = true);
+    clock.getCurrentFormattedTime = () => "16:45"; //16:45:59
+    clock.start();
+    clock.getCurrentFormattedTime = () => "16:46"; //16:46:00
+
+    setTimeout(() => {
+      expect(clock.alarmCollection[0].canCall).toBe(false);
+      expect(flagToCall).toBe(true);
+      done();
+    }, 1000);
+  });
+
 });
